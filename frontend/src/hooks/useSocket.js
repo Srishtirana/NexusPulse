@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
-const BACKEND_URL = "https://nexuspulse-api.onrender.com";
+const api = axios.create({ baseURL: "https://nexuspulse-oxrc.onrender.com/api" });
 let socket;
 
 export function useSocket() {
