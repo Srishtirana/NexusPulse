@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
-const api = axios.create({ baseURL: "https://nexuspulse-oxrc.onrender.com/api" });
+const BACKEND_URL = "https://nexuspulse-oxrc.onrender.com";
+
 let socket;
 
 export function useSocket() {
-  const [servers, setServers]   = useState([]);
-  const [alerts, setAlerts]     = useState([]);
-  const [connected, setConn]    = useState(false);
+  const [servers, setServers] = useState([]);
+  const [alerts, setAlerts]   = useState([]);
+  const [connected, setConn]  = useState(false);
 
   useEffect(() => {
     socket = io(BACKEND_URL);
