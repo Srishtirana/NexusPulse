@@ -11,16 +11,22 @@ const { checkAlerts }              = require("./alertEngine");
 const app    = express();
 const server = http.createServer(app);
 
+const ALLOWED_ORIGINS = [
+  "http://localhost",
+  "http://localhost:80",
+  "http://localhost:5173",
+  "http://localhost:3000",
+  "https://nexus-pulse-six.vercel.app"
+];
+
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173", "https://nexus-pulse-six.vercel.app"],
+    origin: ALLOWED_ORIGINS,
     methods: ["GET", "POST"]
   }
 });
 
-app.use(cors({
-  origin: ["http://localhost:5173", "https://nexus-pulse-six.vercel.app"]
-}));
+app.use(cors({ origin: ALLOWED_ORIGINS }));
 app.use(express.json());
 
 // ── REST API endpoints ─────────────────────────────────────────────────────
