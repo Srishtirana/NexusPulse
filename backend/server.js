@@ -16,6 +16,8 @@ const ALLOWED_ORIGINS = [
   "http://localhost:80",
   "http://localhost:5173",
   "http://localhost:3000",
+  "http://13.234.238.85",
+  "http://13.201.124.44",
   "https://nexus-pulse-six.vercel.app"
 ];
 
@@ -72,7 +74,7 @@ Use DevOps terminology. Be specific. Start each point with an emoji + **Bold Cat
     const response = await axios.post(
       "https://api.anthropic.com/v1/messages",
       {
-        model: "claude-sonnet-4-20250514",
+        model: "claude-haiku-4-5-20251001",
         max_tokens: 1000,
         messages: [{ role: "user", content: prompt }],
       },
