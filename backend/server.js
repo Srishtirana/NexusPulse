@@ -72,24 +72,23 @@ Use DevOps terminology. Be specific. Start each point with an emoji + **Bold Cat
 
   try {
     const response = await axios.post(
-      "https://api.anthropic.com/v1/messages",
+      "https://api.groq.com/openai/v1/chat/completions",
       {
-       model: "claude-haiku-4-5-20251001",
+        model: "llama3-8b-8192",
         max_tokens: 1000,
         messages: [{ role: "user", content: prompt }],
       },
       {
         headers: {
           "Content-Type": "application/json",
-          "x-api-key": process.env.ANTHROPIC_API_KEY,
-          "anthropic-version": "2023-06-01",
+          "Authorization": `Bearer ${process.env.GROQ_API_KEY}`,
         },
       }
     );
-    res.json({ analysis: response.data.content[0].text });
+    res.json({ analysis: response.data.choices[0].message.content });
   } catch (err) {
-    console.error("Claude API error:", err.message);
-    console.error("Claude API details:", err.response?.data);
+    console.error("Groq API error:", err.message);
+    console.error("Groq API details:", err.response?.data);
     res.status(500).json({ error: "AI analysis failed" });
   }
 });
