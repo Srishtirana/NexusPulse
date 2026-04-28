@@ -89,6 +89,7 @@ Use DevOps terminology. Be specific. Start each point with an emoji + **Bold Cat
     res.json({ analysis: response.data.content[0].text });
   } catch (err) {
     console.error("Claude API error:", err.message);
+    console.error("Claude API details:", err.response?.data);
     res.status(500).json({ error: "AI analysis failed" });
   }
 });
