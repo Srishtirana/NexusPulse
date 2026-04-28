@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
-const BACKEND_URL = "http://13.234.238.85:5000";
+const BACKEND_URL = "https://nexuspulse-oxrc.onrender.com";
 
 let socket;
 
